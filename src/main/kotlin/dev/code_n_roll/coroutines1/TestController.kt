@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RestController
 class TestController(private val repository: EntityRepository) {
 
     @GetMapping(path = ["/entity/{id}"])
-    suspend fun getEntity(@PathVariable id: String): TestEntity? {
-        val findById = repository.findById(ObjectId(id))
-        return findById
-    }
+    suspend fun getEntity(@PathVariable id: String) = repository.findById(ObjectId(id))
 
 }
